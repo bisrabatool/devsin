@@ -3,8 +3,8 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
-import Location from './model/location.js'; 
-import ser from './model/user.js'
+import User from './model/user.js';
+
 
 dotenv.config();
 
@@ -15,39 +15,30 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Connect to MongoDB
+// MongoDB conectiom
 connectDB();
 
-// Define Schemas and Models
-import mongoose from 'mongoose';
 
 
 
-// API Routes
-app.get('/', (req, res) => {
-  res.send('Hello World! Server is running.');
-});
-
-app.get('/locations', async (req, res) => {
+//api
+app.post("/api/register", async (req, res) => {
+  const { name, email, password } = req.body;
   try {
-    const locations = await Location.find().sort({ savedAt: -1 });
-    res.json(locations);
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already in use." });
+    }
+    const newUser = new User({ name, email, password });
+    await newUser.save();
+    res.status(201).json({ message: "User registered successfully!" });
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching locations' });
+    res.status(500).json({ message: "Something went wrong.", error: error.message });
   }
 });
 
-app.post('/locations', async (req, res) => {
-  const { name, lat, lng } = req.body;
-
-  const newLocation = new Location({ name, lat, lng });
-
-  try {
-    await newLocation.save();
-    res.status(200).json({ message: 'Location saved successfully', newLocation });
-  } catch (error) {
-    res.status(500).json({ message: 'Error saving location' });
-  }
+app.get("/", (req, res) => {
+  res.send("Server is running!");
 });
 
 // Start the server
