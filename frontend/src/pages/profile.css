@@ -1,0 +1,132 @@
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../assest/freepik__candid-image-photography-natural-textures-highly-r__97690.jpeg') no-repeat center center;
+    background-size: cover;
+    background-color: #f4f4f4;
+    margin: 0;
+  }
+  
+  .profile-container {
+    width: 90%; 
+    max-width: 800px; 
+    padding: 20px;
+    border: 2px solid #c42bfc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.3); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    border-bottom: 2px solid #c42bfc;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-avatar {
+    width: 12vw; 
+    height: 12vw;
+    max-width: 120px; 
+    min-width: 80px; 
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .upload-label {
+    background: #c42bfc;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .upload-input {
+    display: none;
+  }
+  
+  .profile-info {
+    margin-left: 20px;
+    flex: 1; 
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section h2 {
+    color: #450e84;
+  }
+  
+  .skills-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .skill {
+    background: #450e84;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  
+  /* Edit Button */
+  .edit-button {
+    background: #450e84;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .profile-header {
+      flex-direction: column; 
+      text-align: center;
+    }
+  
+    .profile-avatar {
+      width: 14vw; 
+      height: 14vw;
+      margin-bottom: 15px;
+    }
+  
+    .profile-info {
+      margin-left: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-container {
+      width: 95%; 
+      padding: 15px;
+    }
+  
+    .profile-avatar {
+      width: 20vw; 
+      height: 20vw;
+    }
+  
+    .upload-label {
+      font-size: 14px;
+      padding: 8px 10px;
+    }
+  
+    .edit-button {
+      width: 100%; 
+      padding: 12px;
+    }
+  }
+  
